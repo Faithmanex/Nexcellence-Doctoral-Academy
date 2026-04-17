@@ -24,6 +24,7 @@ interface AuthContextType {
   user: User | null
   session: Session | null
   profile: Profile | null
+  isAdmin: boolean
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>
   signUp: (email: string, password: string, fullName: string) => Promise<{ error: Error | null }>
@@ -179,8 +180,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  const isAdmin = profile?.role === 'admin' || profile?.role === 'system_admin'
+
   return (
-    <AuthContext.Provider value={{ supabase, user, session, profile, loading, signIn, signUp, signOut, refreshProfile }}>
+    <AuthContext.Provider value={{ supabase, user, session, profile, isAdmin, loading, signIn, signUp, signOut, refreshProfile }}>
       {children}
     </AuthContext.Provider>
   )

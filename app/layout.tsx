@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { Providers } from '@/components/providers'
 
 const lato = Lato({
   weight: ['300', '400', '700', '900'],
@@ -39,12 +40,14 @@ export default function RootLayout({
         lato.variable,
         notoSerif.variable
       )}>
-        <Header />
-        <main className="flex-1 flex flex-col">
-          <Breadcrumbs />
-          {children}
-        </main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main className="flex-1 flex flex-col">
+            <Breadcrumbs />
+            {children}
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )
