@@ -23,7 +23,7 @@ export default function HomePage() {
             Advancing Scholars into <br />
             <span className="italic text-secondary">Faculty, Research, and Leadership</span> <br className="hidden md:block" /> Excellence.
           </h1>
-          <p className="text-xs md:text-sm lg:text-base text-gray-200 mb-8 font-normal drop-shadow-lg opacity-90 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs md:text-sm lg:text-base text-white mb-8 font-normal drop-shadow-lg max-w-2xl mx-auto leading-relaxed">
             Strategic academic consulting for doctoral scholars, faculty, and academic leaders. From dissertation completion to tenure, publication to program development — Nexcellence Academy™ is your partner at every stage.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">

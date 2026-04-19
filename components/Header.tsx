@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Medal, Phone, Mail, Search, Menu, X } from 'lucide-react'
@@ -8,6 +8,7 @@ import { Medal, Phone, Mail, Search, Menu, X } from 'lucide-react'
 export function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const searchRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -16,6 +17,18 @@ export function Header() {
       document.body.style.overflow = 'unset'
     }
   }, [isMobileMenuOpen])
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsSearchOpen(false)
+      }
+    }
+    if (isSearchOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isSearchOpen])
 
   const navLinks = [
     { label: 'Doctoral', href: '/services/doctoral' },
@@ -67,17 +80,18 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map(link => (
-              <Link key={link.label} href={link.href} className="text-[13px] font-bold text-primary hover:text-secondary uppercase tracking-wider transition-colors whitespace-nowrap">
+              <Link key={link.label} href={link.href} className="text-[13px] font-bold text-primary hover:text-secondary uppercase tracking-wider transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 rounded">
                 {link.label}
               </Link>
             ))}
             <div className="flex items-center gap-4 pl-4 border-l">
-              <div className="relative">
+              <div className="relative" ref={searchRef}>
                 <button 
                   onClick={() => setIsSearchOpen(!isSearchOpen)}
                   title="Search"
                   aria-label="Open search input"
-                  className="flex items-center justify-center"
+                  aria-expanded={isSearchOpen}
+                  className="flex items-center justify-center focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 rounded"
                 >
                   <Search className="w-5 h-5 text-primary cursor-pointer hover:text-secondary" />
                 </button>
@@ -114,7 +128,7 @@ export function Header() {
         
         {/* Mobile Search Overlay */}
         {isSearchOpen && (
-          <div className="lg:hidden p-4 bg-white border-b absolute w-full z-40 animate-in slide-in-from-top">
+          <div className="lg:hidden p-4 bg-white border-b absolute w-full z-40 animate-in slide-in-from-top" role="dialog" aria-label="Search">
             <form onSubmit={(e) => { e.preventDefault(); window.location.href = `/services/doctoral?search=${(e.target as any).query.value}` }}>
               <input 
                 name="query"

@@ -47,11 +47,11 @@ export function Footer() {
               <span className="w-8 h-[2px] bg-secondary mr-3"></span> Useful Links
             </h4>
             <ul className="space-y-3 text-[11px] font-bold uppercase tracking-wider">
-              <li><Link href="/services/doctoral" className="hover:text-secondary transition-all flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Doctoral Academy</Link></li>
-              <li><Link href="/services/faculty" className="hover:text-secondary transition-all flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Faculty Advancement</Link></li>
-              <li><Link href="/services/leadership" className="hover:text-secondary transition-all flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Academic Leadership</Link></li>
-              <li><Link href="/services/publishing" className="hover:text-secondary transition-all flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Publishing Support</Link></li>
-              <li><Link href="/elite" className="text-secondary hover:text-white transition-all flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Elite Program</Link></li>
+              <li><Link href="/services/doctoral" className="hover:text-secondary transition-all flex items-center gap-2"><ArrowRight className="w-3 h-3 text-secondary" /> Doctoral Academy</Link></li>
+              <li><Link href="/services/faculty" className="hover:text-secondary transition-all flex items-center gap-2"><ArrowRight className="w-3 h-3 text-secondary" /> Faculty Advancement</Link></li>
+              <li><Link href="/services/leadership" className="hover:text-secondary transition-all flex items-center gap-2"><ArrowRight className="w-3 h-3 text-secondary" /> Academic Leadership</Link></li>
+              <li><Link href="/services/publishing" className="hover:text-secondary transition-all flex items-center gap-2"><ArrowRight className="w-3 h-3 text-secondary" /> Publishing Support</Link></li>
+              <li><Link href="/elite" className="text-secondary hover:text-white transition-all flex items-center gap-2"><ArrowRight className="w-3 h-3 text-secondary" /> Elite Program</Link></li>
             </ul>
           </div>
 
