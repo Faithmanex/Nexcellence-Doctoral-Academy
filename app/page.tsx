@@ -48,20 +48,20 @@ export default function HomePage() {
 
       {/* Feature Grid (Overlapping) */}
       <section className="relative z-20 container max-w-7xl pb-16">
-        <div className="grid md:grid-cols-3 gap-8 -mt-24">
-          <Link href="/services/doctoral" className="bg-white elevated-card p-10 flex flex-col items-center text-center group cursor-pointer">
-            <Search className="w-10 h-10 text-secondary mb-6 group-hover:scale-110 transition-transform duration-500" />
-            <h3 className="text-xl font-extrabold uppercase tracking-widest mb-4 text-primary font-sans">Doctoral Academy</h3>
+        <div className="grid md:grid-cols-3 gap-8 md:-mt-24 -mt-4">
+          <Link href="/services/doctoral" className="bg-white elevated-card p-6 md:p-10 flex flex-col items-center text-center group cursor-pointer">
+            <Search className="w-8 h-8 md:w-10 md:h-10 text-secondary mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-500" />
+            <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-widest mb-3 md:mb-4 text-primary font-sans">Doctoral Academy</h3>
             <p className="text-sm text-slate-600 font-light leading-relaxed">Completing your dissertation feels impossible. You're stuck, overwhelmed, or running out of time. We provide the structure, coaching, and editing support to get you to the finish line.</p>
           </Link>
-          <Link href="/services/faculty" className="bg-white elevated-card p-10 flex flex-col items-center text-center group cursor-pointer border-t-4 border-t-secondary">
-            <GraduationCap className="w-10 h-10 mb-6 group-hover:scale-110 transition-transform duration-500 text-secondary" />
-            <h3 className="text-xl font-extrabold uppercase tracking-widest mb-4 text-primary font-sans">Faculty Advancement</h3>
+          <Link href="/services/faculty" className="bg-white elevated-card p-6 md:p-10 flex flex-col items-center text-center group cursor-pointer border-t-4 border-t-secondary">
+            <GraduationCap className="w-8 h-8 md:w-10 md:h-10 mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-500 text-secondary" />
+            <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-widest mb-3 md:mb-4 text-primary font-sans">Faculty Advancement</h3>
             <p className="text-sm text-slate-600 font-medium leading-relaxed">You've earned your degree. Now it's time to publish, position, and advance. We help faculty build research profiles, navigate tenure, and establish scholarly authority.</p>
           </Link>
-          <Link href="/services/leadership" className="bg-white elevated-card p-10 flex flex-col items-center text-center group cursor-pointer">
-            <Globe className="w-10 h-10 text-secondary mb-6 group-hover:scale-110 transition-transform duration-500" />
-            <h3 className="text-xl font-extrabold uppercase tracking-widest mb-4 text-primary font-sans">Leadership</h3>
+          <Link href="/services/leadership" className="bg-white elevated-card p-6 md:p-10 flex flex-col items-center text-center group cursor-pointer">
+            <Globe className="w-8 h-8 md:w-10 md:h-10 text-secondary mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-500" />
+            <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-widest mb-3 md:mb-4 text-primary font-sans">Leadership</h3>
             <p className="text-sm text-slate-600 font-light leading-relaxed">You lead people, programs, or institutions. We provide executive coaching, curriculum strategy, and consulting for administrators who want to build lasting academic impact.</p>
           </Link>
         </div>

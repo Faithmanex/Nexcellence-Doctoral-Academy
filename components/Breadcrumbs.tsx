@@ -14,7 +14,7 @@ export function Breadcrumbs() {
 
   return (
     <div className="bg-muted/10 border-b">
-      <nav aria-label="Breadcrumb" className="container py-3 text-sm text-muted-foreground flex items-center space-x-2 overflow-x-auto">
+      <nav aria-label="Breadcrumb" className="container py-3 text-sm text-muted-foreground flex items-center space-x-2 overflow-x-auto no-scrollbar">
         <Link href="/" className="hover:text-primary transition-colors flex items-center flex-shrink-0" title="Home">
           <Home className="w-4 h-4" />
         </Link>
