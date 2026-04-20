@@ -27,6 +27,7 @@ interface AuthContextType {
   isAdmin: boolean
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>
+  signInWithGoogle: () => Promise<{ error: Error | null }>
   signUp: (email: string, password: string, fullName: string) => Promise<{ error: Error | null }>
   signOut: () => Promise<void>
   refreshProfile: () => Promise<void>
@@ -134,6 +135,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  const signInWithGoogle = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/api/auth/callback`,
+        },
+      })
+      if (error) {
+        return { error }
+      }
+      return { error: null }
+    } catch (error) {
+      return { error: error as Error }
+    }
+  }
+
   const signUp = async (email: string, password: string, fullName: string) => {
     try {
       const { data, error } = await supabase.auth.signUp({
@@ -183,7 +201,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const isAdmin = profile?.role === 'admin' || profile?.role === 'system_admin'
 
   return (
-    <AuthContext.Provider value={{ supabase, user, session, profile, isAdmin, loading, signIn, signUp, signOut, refreshProfile }}>
+    <AuthContext.Provider value={{ supabase, user, session, profile, isAdmin, loading, signIn, signInWithGoogle, signUp, signOut, refreshProfile }}>
       {children}
     </AuthContext.Provider>
   )
