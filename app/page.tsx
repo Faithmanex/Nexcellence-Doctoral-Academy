@@ -12,6 +12,7 @@ export default function HomePage() {
           src="/images/hero.png" 
           alt="Nexcellence Academy Campus" 
           fill 
+          sizes="100vw"
           className="object-cover scale-105"
           priority
         />
@@ -23,8 +24,8 @@ export default function HomePage() {
             Advancing Scholars into <br />
             <span className="italic text-secondary">Faculty, Research, and Leadership</span> <br className="hidden md:block" /> Excellence.
           </h1>
-          <p className="text-xs md:text-sm lg:text-base text-white mb-8 font-normal drop-shadow-lg max-w-2xl mx-auto leading-relaxed">
-            Strategic academic consulting for doctoral scholars, faculty, and academic leaders. From dissertation completion to tenure, publication to program development — Nexcellence Academy™ is your partner at every stage.
+          <p className="text-base text-white mb-8 font-normal drop-shadow-lg max-w-2xl mx-auto leading-relaxed">
+            Strategic academic consulting for doctoral scholars, faculty, academic leaders, curriculum designers, and aspiring authors.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
             <Link href="/apply">
@@ -73,11 +74,11 @@ export default function HomePage() {
           <div>
             <div className="flex items-center gap-4 mb-4">
               <div className="h-[2px] w-12 bg-secondary" />
-              <h4 className="text-secondary font-bold uppercase tracking-widest text-sm">How It Works</h4>
+              <h2 className="text-secondary font-bold uppercase tracking-widest text-sm">How It Works</h2>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-primary font-serif mb-6 leading-tight">
+            <h3 className="text-2xl md:text-3xl font-bold text-primary font-serif mb-6 leading-tight">
               Your Path to <br/> Academic Excellence
-            </h2>
+            </h3>
             
             <div className="grid sm:grid-cols-2 gap-4">
               {[
@@ -102,18 +103,18 @@ export default function HomePage() {
           </div>
           <div className="relative h-[600px] w-full mt-10 lg:mt-0">
             <div className="absolute top-0 right-0 w-[80%] h-[70%] z-10 transition-transform duration-700 hover:scale-[1.02]">
-              <Image src="/images/leadership.png" alt="Academic Leadership Engagement" fill className="object-cover shadow-xl border-8 border-white" />
+              <Image src="/images/leadership.png" alt="" fill sizes="(min-width: 1024px) 40vw, 80vw" className="object-cover shadow-xl border-8 border-white" role="presentation" aria-hidden="true" />
             </div>
             <div className="absolute bottom-10 left-0 w-[65%] h-[55%] z-20 transition-transform duration-700 hover:scale-[1.05]">
-              <Image src="/images/doctoral.png" alt="Doctoral Coaching Session" fill className="object-cover shadow-2xl border-8 border-white" />
+              <Image src="/images/doctoral.png" alt="" fill sizes="(min-width: 1024px) 33vw, 65vw" className="object-cover shadow-2xl border-8 border-white" role="presentation" aria-hidden="true" />
             </div>
           </div>
         </div>
       </section>
       
       {/* Social Proof Bar (Parallax Stats imitation) */}
-      <section className="bg-[url('/images/doctoral.png')] bg-cover bg-center bg-fixed bg-no-repeat relative py-24 border-y-8 border-secondary">
-         <div className="absolute inset-0 bg-[#192f59]/90" />
+      <section className="bg-[url('/images/doctoral.png')] bg-cover bg-center bg-fixed bg-no-repeat relative py-24 border-y-8 border-secondary" role="img" aria-label="Decorative background showing academic setting">
+         <div className="absolute inset-0 bg-[#192f59]/90" aria-hidden="true" />
          <div className="container relative z-10">
            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
              <div className="space-y-3">

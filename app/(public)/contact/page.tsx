@@ -35,6 +35,7 @@ export default function ContactPage() {
           src="/images/leadership.png" 
           alt="Contact Us" 
           fill 
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#0a192f]/80" />

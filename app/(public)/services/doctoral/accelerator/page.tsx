@@ -12,6 +12,7 @@ export default function acceleratorWeekend() {
           src="/images/leadership.png" 
           alt="Accelerator Weekend" 
           fill 
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#14213d]/85" />

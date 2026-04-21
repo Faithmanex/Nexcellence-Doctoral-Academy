@@ -39,6 +39,7 @@ export default function FacultyAdvancement() {
           src="/images/leadership.png" 
           alt="Faculty Advancement" 
           fill 
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#192f59]/80" />

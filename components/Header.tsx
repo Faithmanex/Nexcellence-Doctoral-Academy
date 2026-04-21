@@ -138,37 +138,47 @@ export function Header() {
         )}
 
         {/* Custom Mobile Menu Dropdown */}
-        <div ref={mobileMenuRef} className={`absolute right-0 top-full z-[100] w-72 bg-slate-900 shadow-2xl flex flex-col border-t border-white/10 transition-all duration-200 origin-top ${isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'}`}>
-            <div className="flex justify-between items-center p-4 border-b border-white/10">
-              <span className="text-white font-serif uppercase tracking-widest text-base font-bold">Navigation</span>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8" onClick={() => setIsMobileMenuOpen(false)} title="Close Menu" aria-label="Close navigation menu">
-                <X className="w-5 h-5" />
-              </Button>
-            </div>
-            <div className="flex flex-col gap-1 p-2 max-h-[70vh] overflow-y-auto">
-              {navLinks.map(link => (
+        <div ref={mobileMenuRef} className={`absolute right-0 top-full z-[100] w-72 bg-slate-900 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] overflow-hidden rounded-b-xl ${isMobileMenuOpen ? 'animate-dropdown-open' : 'animate-dropdown-close opacity-0 pointer-events-none'}`}>
+            <div className="flex flex-col">
+              <div className="flex justify-end p-4">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8" onClick={() => setIsMobileMenuOpen(false)} title="Close Menu" aria-label="Close navigation menu">
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+              <div className="flex flex-col gap-1 p-2 max-h-[70vh] overflow-y-auto">
+              {navLinks.map((link, i) => (
                 <Link 
                   key={link.label} 
                   href={link.href} 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-base font-bold text-white hover:text-secondary px-3 py-2 transition-colors rounded"
+                  className="text-base font-bold text-white hover:text-secondary hover:bg-white/5 px-3 py-2.5 transition-all duration-150 rounded translate-x-0 hover:translate-x-1"
+                  style={{ transitionDelay: isMobileMenuOpen ? `${i * 30}ms` : `${(navLinks.length - i) * 15}ms` }}
                 >
                   {link.label}
                 </Link>
               ))}
               <hr className="opacity-10 my-2" />
-              {topLinks.map(link => (
-                <Link key={link.label} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/70 px-3 py-2">{link.label}</Link>
+              {topLinks.map((link, i) => (
+                <Link 
+                  key={link.label} 
+                  href={link.href} 
+                  onClick={() => setIsMobileMenuOpen(false)} 
+                  className="text-sm text-white/70 px-3 py-2 hover:text-white hover:bg-white/5 transition-all duration-150 rounded"
+                  style={{ transitionDelay: isMobileMenuOpen ? `${(navLinks.length + i) * 30}ms` : `${(topLinks.length - i) * 15}ms` }}
+                >
+                  {link.label}
+                </Link>
               ))}
-              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/70 px-3 py-2">Dashboard</Link>
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/70 px-3 py-2">Contact</Link>
+              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/70 px-3 py-2 hover:text-white hover:bg-white/5 transition-all duration-150 rounded">Dashboard</Link>
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/70 px-3 py-2 hover:text-white hover:bg-white/5 transition-all duration-150 rounded">Contact</Link>
               <Link href="/apply" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
-                <Button className="w-full font-bold uppercase text-sm bg-secondary text-primary rounded h-12 border-b-2 border-[#c2820a]">
+                <Button className="w-full font-bold uppercase text-sm bg-secondary text-primary rounded h-12 border-b-2 border-[#c2820a] hover:bg-secondary/90 hover:scale-[1.02] transition-all duration-200">
                   Apply Now
                 </Button>
               </Link>
             </div>
           </div>
+        </div>
       </header>
     </div>
   )

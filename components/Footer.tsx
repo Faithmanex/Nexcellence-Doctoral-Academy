@@ -75,9 +75,9 @@ export function Footer() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light tracking-wide text-gray-400">
           <p>COPYRIGHT {new Date().getFullYear()} NEXCELLENCE ACADEMY, ALL RIGHTS RESERVED.</p>
           <div className="flex gap-4">
-            <span className="hover:text-white cursor-pointer transition-colors">Facebook</span>
-            <span className="hover:text-white cursor-pointer transition-colors">Twitter</span>
-            <span className="hover:text-white cursor-pointer transition-colors">LinkedIn</span>
+            <a href="https://facebook.com" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://twitter.com" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://linkedin.com" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
       </div>

@@ -30,6 +30,7 @@ export default function Dissertation90Day() {
           src="/images/doctoral.png" 
           alt="90 Day Dissertation" 
           fill 
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#0a192f]/85" />

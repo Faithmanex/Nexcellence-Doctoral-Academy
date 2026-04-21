@@ -67,6 +67,7 @@ export default function ApplyPage() {
           src="/images/hero.png" 
           alt="Apply to Nexcellence Academy" 
           fill 
+          sizes="100vw"
           className="object-cover"
           priority
         />
@@ -191,8 +192,9 @@ export default function ApplyPage() {
                   <div className="space-y-6">
                     <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-secondary border-b border-slate-100 pb-2">Your Objectives</h3>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-primary/60">Tell us about your current situation & primary goals *</label>
+                      <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-widest text-primary/60">Tell us about your current situation & primary goals *</label>
                       <textarea 
+                        id="message"
                         rows={5}
                         required
                         value={formData.message}
@@ -200,8 +202,9 @@ export default function ApplyPage() {
                         className="w-full p-4 bg-slate-50 border border-slate-200 rounded-none focus:border-secondary outline-none transition-all text-sm"
                         placeholder="What specific challenges are you facing and what do you hope to achieve with Nexcellence Academy™?"
                         maxLength={1000}
+                        aria-describedby="message-count"
                       />
-                      <p className="text-[10px] text-slate-400 text-right uppercase tracking-widest">{formData.message.length} / 1000 characters</p>
+                      <p id="message-count" className="text-[10px] text-slate-400 text-right uppercase tracking-widest" aria-live="polite">{formData.message.length} / 1000 characters</p>
                     </div>
                   </div>
 

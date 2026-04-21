@@ -33,6 +33,7 @@ export default function LeadershipCoaching() {
           src="/images/leadership.png" 
           alt="Academic Leadership" 
           fill 
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#192f59]/80" />

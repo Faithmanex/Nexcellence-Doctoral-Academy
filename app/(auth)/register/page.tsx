@@ -105,7 +105,7 @@ export default function RegisterPage() {
         <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
 
         {submitError && (
-          <div className="mb-6 p-4 rounded-md bg-destructive/10 border border-destructive/20 flex items-center gap-3">
+          <div className="mb-6 p-4 rounded-md bg-destructive/10 border border-destructive/20 flex items-center gap-3" role="alert" aria-live="polite">
             <AlertCircle className="w-5 h-5 text-destructive shrink-0" />
             <p className="text-sm text-destructive">{submitError}</p>
           </div>

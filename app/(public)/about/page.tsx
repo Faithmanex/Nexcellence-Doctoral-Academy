@@ -21,6 +21,7 @@ export default function AboutPage() {
           src="/images/hero.png" 
           alt="Dr. William Triplett" 
           fill 
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#0a192f]/80" />

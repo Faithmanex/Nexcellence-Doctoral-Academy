@@ -69,6 +69,7 @@ export default function EliteProgramPage() {
           src="/images/hero.png" 
           alt="Elite Academic Transformation" 
           fill 
+          sizes="100vw"
           className="object-cover"
           priority
         />
@@ -128,7 +129,7 @@ export default function EliteProgramPage() {
       <section className="py-12 container max-w-7xl px-6">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="relative h-[600px] group">
-            <Image src="/images/leadership.png" alt="High-level consulting" fill className="object-cover rounded shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000" />
+            <Image src="/images/leadership.png" alt="High-level consulting" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover rounded shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000" />
             <div className="absolute -bottom-10 -right-10 bg-secondary p-12 hidden lg:block shadow-2xl">
               <Quote className="text-primary w-12 h-12 opacity-20 mb-4" />
               <p className="text-primary font-serif italic text-xl leading-relaxed max-w-xs">
