@@ -168,18 +168,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return { error }
       }
 
-      if (data.user) {
-        await supabase.from('profiles').insert({
-          id: data.user.id,
-          email,
-          full_name: fullName,
-          role: 'client',
-          enrolled_service: null,
-          next_steps: [],
-          calendly_url: null,
-        })
-      }
-
       return { error: null }
     } catch (error) {
       return { error: error as Error }

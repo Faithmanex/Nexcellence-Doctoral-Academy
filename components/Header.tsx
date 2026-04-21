@@ -9,26 +9,22 @@ export function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const searchRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-  }, [isMobileMenuOpen])
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setIsSearchOpen(false)
       }
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false)
+      }
     }
-    if (isSearchOpen) {
+    if (isSearchOpen || isMobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside)
     }
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [isSearchOpen])
+  }, [isSearchOpen, isMobileMenuOpen])
 
   const navLinks = [
     { label: 'Doctoral', href: '/services/doctoral' },
@@ -68,7 +64,7 @@ export function Header() {
       </div>
       
       {/* Main Header */}
-      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm shadow-slate-200/50">
+      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm shadow-slate-200/50 relative">
         <div className="container flex h-20 lg:h-24 items-center justify-between px-4 max-w-7xl mx-auto">
           <Link href="/" className="flex items-center space-x-2 md:space-x-3 group shrink-0">
             <div className="bg-secondary p-1.5 md:p-2 rounded flex items-center justify-center">
@@ -141,40 +137,38 @@ export function Header() {
           </div>
         )}
 
-        {/* Custom Mobile Menu Drawer */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-[100] bg-slate-900 transition-all duration-300 flex flex-col">
-            <div className="flex justify-between items-center p-6 border-b border-white/10">
-              <span className="text-white font-serif uppercase tracking-widest text-xl font-bold">Navigation</span>
-              <Button variant="ghost" className="text-white hover:bg-white/10" onClick={() => setIsMobileMenuOpen(false)} title="Close Menu" aria-label="Close navigation menu">
-                <X className="w-8 h-8" />
+        {/* Custom Mobile Menu Dropdown */}
+        <div ref={mobileMenuRef} className={`absolute right-0 top-full z-[100] w-72 bg-slate-900 shadow-2xl flex flex-col border-t border-white/10 transition-all duration-200 origin-top ${isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'}`}>
+            <div className="flex justify-between items-center p-4 border-b border-white/10">
+              <span className="text-white font-serif uppercase tracking-widest text-base font-bold">Navigation</span>
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8" onClick={() => setIsMobileMenuOpen(false)} title="Close Menu" aria-label="Close navigation menu">
+                <X className="w-5 h-5" />
               </Button>
             </div>
-            <div className="flex flex-col gap-6 p-8 overflow-y-auto">
+            <div className="flex flex-col gap-1 p-2 max-h-[70vh] overflow-y-auto">
               {navLinks.map(link => (
                 <Link 
                   key={link.label} 
                   href={link.href} 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl font-bold text-white hover:text-secondary transition-colors uppercase tracking-widest"
+                  className="text-base font-bold text-white hover:text-secondary px-3 py-2 transition-colors rounded"
                 >
                   {link.label}
                 </Link>
               ))}
-              <hr className="opacity-10" />
+              <hr className="opacity-10 my-2" />
               {topLinks.map(link => (
-                <Link key={link.label} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-white/70 font-medium">{link.label}</Link>
+                <Link key={link.label} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/70 px-3 py-2">{link.label}</Link>
               ))}
-              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-white/70 font-medium">Dashboard</Link>
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg text-white/70 font-medium">Contact</Link>
-              <Link href="/apply" onClick={() => setIsMobileMenuOpen(false)} className="mt-6">
-                <Button className="w-full font-bold uppercase tracking-widest bg-secondary text-primary rounded-none h-16 text-lg border-b-4 border-[#c2820a]">
+              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/70 px-3 py-2">Dashboard</Link>
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-sm text-white/70 px-3 py-2">Contact</Link>
+              <Link href="/apply" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
+                <Button className="w-full font-bold uppercase text-sm bg-secondary text-primary rounded h-12 border-b-2 border-[#c2820a]">
                   Apply Now
                 </Button>
               </Link>
             </div>
           </div>
-        )}
       </header>
     </div>
   )

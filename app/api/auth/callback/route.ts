@@ -31,26 +31,6 @@ export async function GET(request: NextRequest) {
     const { data: { session }, error } = await supabase.auth.exchangeCodeForSession(code)
 
     if (!error && session) {
-      // Ensure profile exists for Google OAuth users (and others)
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('id')
-        .eq('id', session.user.id)
-        .single()
-
-      if (!profile) {
-        // Create default profile for the user
-        await supabase.from('profiles').insert({
-          id: session.user.id,
-          email: session.user.email,
-          full_name: session.user.user_metadata?.full_name || session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'Scholar',
-          role: 'client',
-          enrolled_service: null,
-          next_steps: [],
-          calendly_url: null,
-        })
-      }
-
       return NextResponse.redirect(`${origin}${next}`)
     }
   }

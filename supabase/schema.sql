@@ -113,3 +113,23 @@ CREATE POLICY "Admins can manage tokens" ON upload_tokens FOR ALL USING (is_admi
 CREATE POLICY "Anyone can insert contact submissions" ON contact_submissions FOR INSERT WITH CHECK (true);
 CREATE POLICY "Admins can view contact submissions" ON contact_submissions FOR SELECT USING (is_admin());
 CREATE POLICY "Admins can manage contact submissions" ON contact_submissions FOR UPDATE USING (is_admin());
+
+-- Automated Profile Creation from Auth
+CREATE OR REPLACE FUNCTION public.handle_new_user() 
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO public.profiles (id, email, full_name, role)
+  VALUES (
+    new.id, 
+    new.email, 
+    COALESCE(new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'name', split_part(new.email, '@', 1)), 
+    'client'
+  );
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
