@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
+import { BookSessionButton } from "@/components/BookSessionButton"
 import { CheckCircle2, Award, BookOpen, Target, Users, ArrowRight, FileText, Microscope } from "lucide-react"
 
 export default function FacultyAdvancement() {
@@ -87,11 +88,9 @@ export default function FacultyAdvancement() {
             <div className="bg-primary p-10 text-white elevated-card">
               <h3 className="text-xl font-bold uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Need Help?</h3>
               <p className="text-sm opacity-80 leading-relaxed mb-8">Not sure which pathway is right for your faculty career stage? Schedule a strategy session today.</p>
-              <Link href="/apply">
-                <Button className="w-full bg-secondary text-primary font-bold uppercase tracking-widest rounded-none py-6 border-b-4 border-[#c2820a]">
-                  Contact Us
-                </Button>
-              </Link>
+              <BookSessionButton className="w-full bg-secondary text-primary hover:bg-secondary/90 font-bold uppercase tracking-widest rounded-none h-14 border-b-4 border-[#c2820a]">
+                Contact Us
+              </BookSessionButton>
             </div>
 
             <div className="bg-slate-900 elevated-card p-10 text-white border-t-8 border-t-secondary">

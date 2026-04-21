@@ -295,7 +295,7 @@ This document outlines the gap analysis between the current website implementati
 |---------|-----------------|---------------|----------------|
 | **Login Flow** | Password login + Google OAuth | ✅ Done | — |
 | **Client Dashboard** | Displays current milestones | ⚠️ Needs Verification | Verify timeline logic |
-| **Admin Dashboard** | Set custom Calendly URLs per user | ❌ Missing | Connect to Calendly task |
+| **Admin Dashboard** | Set custom Calendly URLs per user | ✅ Done | Connect to Calendly task |
 
 ---
 
@@ -305,7 +305,7 @@ This document outlines the gap analysis between the current website implementati
 
 | # | Task | Category | Est. Time |
 |---|------|---------|----------|
-| 1 | **Integrate Calendly** for booking sessions | Calendly | 4-6 hours |
+| 1 | ~~**Integrate Calendly** for booking sessions~~ | Calendly | ✅ DONE |
 | 2 | **Create Founder Page** for Dr. William Triplett | Pages | 2-3 hours |
 | 3 | **Upload Free Guide PDF** | Content | 1 hour |
 | 4 | **Mobile Testing** (iOS Safari, Android Chrome) | QA | 2-4 hours |

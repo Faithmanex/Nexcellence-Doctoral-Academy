@@ -91,12 +91,20 @@ export default function ClientDetail() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-3">
-              <Button variant="outline" className="bg-white border-slate-200 h-11 px-6 rounded-xl">
-                Edit Scholar Profile
-              </Button>
+            <div className="flex gap-3 items-center">
+              <div className="flex items-center gap-2">
+                <input 
+                  type="url" 
+                  placeholder="Calendly URL..." 
+                  defaultValue={client?.calendly_url || ''}
+                  onBlur={async (e) => {
+                    await supabase.from('profiles').update({ calendly_url: e.target.value }).eq('id', id);
+                  }}
+                  className="text-xs bg-white border border-slate-200 px-3 py-2 rounded-xl focus:ring-1 focus:ring-secondary/30 focus:outline-none w-64"
+                />
+              </div>
               <Button className="bg-primary text-white h-11 px-6 rounded-xl shadow-lg shadow-primary/20">
-                Grant Access
+                Update Settings
               </Button>
             </div>
           </header>

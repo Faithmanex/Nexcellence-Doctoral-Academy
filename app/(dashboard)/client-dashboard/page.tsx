@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabase"
 import { AuthGuard } from "@/components/AuthGuard"
+import { CalendlyWidget } from "@/components/CalendlyWidget"
 import { Button } from "@/components/ui/button"
 import { 
   CheckCircle2, 
@@ -23,6 +24,7 @@ interface Profile {
   enrolled_service: string
   next_steps: { text: string; order: number }[]
   calendly_url: string
+  upload_token: string
 }
 
 interface Milestone {
@@ -52,6 +54,7 @@ export default function ClientDashboard() {
   const [documents, setDocuments] = useState<Document[]>([])
   const [notes, setNotes] = useState<CoachNote[]>([])
   const [loading, setLoading] = useState(true)
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
@@ -310,7 +313,48 @@ export default function ClientDashboard() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Fixed Action Panel */}
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-200 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] md:hidden z-40 flex flex-col gap-3">
+          <Button 
+            className="w-full bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-widest text-xs h-12"
+            onClick={() => window.location.href = `/upload${profile?.upload_token ? `?token=${profile.upload_token}` : ''}`}
+          >
+            Submit a Document
+          </Button>
+          <Button 
+            variant="outline"
+            className="w-full border-2 border-primary text-primary font-bold uppercase tracking-widest text-xs h-12"
+            onClick={() => setIsCalendlyOpen(true)}
+          >
+            <Calendar className="w-4 h-4 mr-2" />
+            Book Your Next Session
+          </Button>
+        </div>
+
+        {/* Desktop Action Buttons (Added to Quick Links area or below it) */}
+        <div className="hidden md:flex flex-col sm:flex-row gap-4 mt-8">
+          <Button 
+            className="bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-widest text-xs h-14 px-8 rounded-xl"
+            onClick={() => window.location.href = `/upload${profile?.upload_token ? `?token=${profile.upload_token}` : ''}`}
+          >
+            Submit a Document
+          </Button>
+          <Button 
+            variant="outline"
+            className="border-2 border-primary text-primary hover:bg-primary/5 font-bold uppercase tracking-widest text-xs h-14 px-8 rounded-xl"
+            onClick={() => setIsCalendlyOpen(true)}
+          >
+            <Calendar className="w-4 h-4 mr-2" />
+            Book Your Next Session
+          </Button>
+        </div>
       </div>
+      <CalendlyWidget 
+        url={profile?.calendly_url || "https://calendly.com/nexcellence"} 
+        isOpen={isCalendlyOpen} 
+        onClose={() => setIsCalendlyOpen(false)} 
+      />
     </AuthGuard>
   )
 }

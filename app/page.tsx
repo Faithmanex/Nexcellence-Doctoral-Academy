@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { Search, GraduationCap, Globe, ChevronRight, Trophy, TrendingUp, Users, CalendarCheck, Medal, ArrowRight } from "lucide-react"
+import { BookSessionButton } from "@/components/BookSessionButton"
 
 export default function HomePage() {
   return (
@@ -28,11 +29,9 @@ export default function HomePage() {
             Strategic academic consulting for doctoral scholars, faculty, academic leaders, curriculum designers, and aspiring authors.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-            <Link href="/apply">
-              <Button size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a] transition-all">
-                Book a Consultation
-              </Button>
-            </Link>
+            <BookSessionButton className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a] transition-all">
+              Book a Consultation
+            </BookSessionButton>
             <Link href="/services/doctoral">
               <Button size="lg" variant="outline" className="h-14 px-8 border-2 border-white text-white hover:bg-white hover:text-primary font-bold uppercase tracking-widest rounded-none bg-transparent transition-all">
                 Start My Academic Strategy
