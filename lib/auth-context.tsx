@@ -1,23 +1,9 @@
 'use client'
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
-import { createClient, User, Session } from '@supabase/supabase-js'
+import { User, Session } from '@supabase/supabase-js'
 import { useRouter } from 'next/navigation'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
-}
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: true,
-  },
-})
+import { supabase } from '@/lib/supabase'
 
 interface AuthContextType {
   supabase: typeof supabase
@@ -54,20 +40,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const fetchProfile = async (userId: string) => {
     try {
-      const { data, error } = await supabase
+      const { data, error, status } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
         .single()
 
       if (error) {
-        console.error('Error fetching profile:', error)
+        // 406 is usually RLS recursion or schema mismatch
+        // PGRST116 is 'no rows found' for .single()
+        if (error.code === 'PGRST116') {
+          console.warn('Profile not found for user:', userId)
+        } else {
+          console.error(`Error fetching profile (Status ${status}):`, error)
+        }
         return null
       }
 
       return data as Profile
-    } catch (error) {
-      console.error('Error fetching profile:', error)
+    } catch (err) {
+      console.error('Unexpected error fetching profile:', err)
       return null
     }
   }
@@ -100,6 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     initializeAuth()
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, currentSession) => {
+      console.log('Auth state changed:', event, currentSession ? 'Session found' : 'No session')
       setSession(currentSession)
       setUser(currentSession?.user || null)
 
@@ -126,6 +119,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       })
 
       if (error) {
+        console.error('Sign in error:', error)
         return { error }
       }
 
@@ -144,6 +138,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         },
       })
       if (error) {
+        console.error('Google sign in error:', error)
         return { error }
       }
       return { error: null }
@@ -165,6 +160,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       })
 
       if (error) {
+        console.error('Sign up error:', error)
         return { error }
       }
 

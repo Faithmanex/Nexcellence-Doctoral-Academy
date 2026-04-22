@@ -4,8 +4,8 @@ import { NextResponse, type NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
+  console.log('Auth callback hit:', request.url)
   const code = searchParams.get('code')
-  // next is the URL to redirect to after sign in process completes
   const next = searchParams.get('next') ?? '/dashboard'
 
   if (code) {
@@ -29,6 +29,10 @@ export async function GET(request: NextRequest) {
     )
 
     const { data: { session }, error } = await supabase.auth.exchangeCodeForSession(code)
+    
+    if (error) {
+      console.error('Error exchanging code for session:', error)
+    }
 
     if (!error && session) {
       return NextResponse.redirect(`${origin}${next}`)

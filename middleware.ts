@@ -63,7 +63,8 @@ export async function middleware(request: NextRequest) {
   const authRoutes = ['/login', '/signup']
 
   if (authRoutes.includes(pathname) && session) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+    // Redirect to client-dashboard for all authenticated users
+    return NextResponse.redirect(new URL('/client-dashboard', request.url))
   }
 
   if (protectedRoutes.some(route => pathname.startsWith(route))) {
@@ -71,6 +72,11 @@ export async function middleware(request: NextRequest) {
       const redirectUrl = new URL('/login', request.url)
       redirectUrl.searchParams.set('redirect', pathname)
       return NextResponse.redirect(redirectUrl)
+    }
+    
+    // If accessing /dashboard, redirect to client-dashboard based on role
+    if (pathname === '/dashboard') {
+      return NextResponse.redirect(new URL('/client-dashboard', request.url))
     }
   }
 
@@ -88,7 +94,7 @@ export async function middleware(request: NextRequest) {
       .single()
 
     if (profile?.role !== 'admin') {
-      return NextResponse.redirect(new URL('/dashboard', request.url))
+      return NextResponse.redirect(new URL('/client-dashboard', request.url))
     }
   }
 

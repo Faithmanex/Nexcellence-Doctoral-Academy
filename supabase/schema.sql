@@ -76,19 +76,19 @@ ALTER TABLE documents ENABLE ROW LEVEL SECURITY;
 ALTER TABLE upload_tokens ENABLE ROW LEVEL SECURITY;
 ALTER TABLE contact_submissions ENABLE ROW LEVEL SECURITY;
 
--- Helper function to check if user is admin
 CREATE OR REPLACE FUNCTION is_admin()
 RETURNS boolean AS $$
 BEGIN
   RETURN EXISTS (
-    SELECT 1 FROM profiles
-    WHERE id = auth.uid() AND role = 'admin'
+    SELECT 1 FROM public.profiles
+    WHERE id = auth.uid() AND (role = 'admin' OR role = 'system_admin')
   );
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 -- Profiles: users can read and update only their own row; admins can do all
-CREATE POLICY "Users can view own profile" ON profiles FOR SELECT USING (auth.uid() = id OR is_admin());
+CREATE POLICY "Users can view own profile" ON profiles FOR SELECT USING (auth.uid() = id);
+CREATE POLICY "Admins can view all profiles" ON profiles FOR SELECT USING (is_admin());
 CREATE POLICY "Users can update own profile" ON profiles FOR UPDATE USING (auth.uid() = id OR is_admin());
 CREATE POLICY "Admins can insert profiles" ON profiles FOR INSERT WITH CHECK (is_admin());
 

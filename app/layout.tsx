@@ -35,18 +35,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <meta name="theme-color" content="#0a192f" />
-      </head>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased flex flex-col selection:bg-primary/20",
         lato.variable,
         notoSerif.variable
       )}>
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary">Skip to content</a>
         <Providers>
           <Header />
-          <main id="main-content" className="flex-1 flex flex-col">
+          <main className="flex-1 flex flex-col">
             <Breadcrumbs />
             {children}
           </main>

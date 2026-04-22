@@ -30,13 +30,14 @@ export function AuthGuard({ children, allowedRole }: AuthGuardProps) {
         .single()
 
       if (allowedRole && profile?.role !== allowedRole) {
-        // Redirect if role doesn't match
-        if (profile?.role === 'admin') {
-          router.push("/admin")
-        } else {
-          router.push("/client-dashboard")
+        // Prevent infinite redirects
+        const currentPath = window.location.pathname
+        const targetPath = profile?.role === 'admin' ? '/admin' : '/client-dashboard'
+        
+        if (currentPath !== targetPath) {
+          router.push(targetPath)
+          return
         }
-        return
       }
 
       setAuthorized(true)

@@ -1,21 +1,27 @@
-"use client"
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useEffect, useState, Suspense } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/lib/auth-context'
 import { Button } from '@/components/ui/button'
 import { Input, Label } from '@/components/form-input'
 import { Eye, EyeOff, LogIn, AlertCircle, Loader2 } from 'lucide-react'
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter()
-  const { signIn, signInWithGoogle } = useAuth()
+  const searchParams = useSearchParams()
+  const { user, signIn, signInWithGoogle } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [googleLoading, setGoogleLoading] = useState(false)
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState(searchParams.get('error') || '')
+
+  useEffect(() => {
+    if (user) {
+      router.push('/client-dashboard')
+    }
+  }, [user, router])
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -26,10 +32,10 @@ export default function LoginPage() {
     
     if (error) {
       setMessage(error.message || 'Invalid login credentials')
+      setLoading(false)
     } else {
-      router.push('/dashboard')
+      window.location.href = '/client-dashboard'
     }
-    setLoading(false)
   }
 
   const handleGoogleLogin = async () => {
@@ -42,7 +48,6 @@ export default function LoginPage() {
       setMessage(error.message)
       setGoogleLoading(false)
     }
-    // No redirect config here because Supabase handles redirect to our callback API
   }
 
   return (
@@ -143,4 +148,13 @@ export default function LoginPage() {
     </div>
   )
 }
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>}>
+      <LoginForm />
+    </Suspense>
+  )
+}
+
 
