@@ -153,6 +153,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email,
         password,
         options: {
+          emailRedirectTo: `${window.location.origin}/api/auth/callback`,
           data: {
             full_name: fullName,
           },
