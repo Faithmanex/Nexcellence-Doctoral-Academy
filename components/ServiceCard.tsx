@@ -32,11 +32,11 @@ export function ServiceCard({ title, price, desc, icon: Icon, type, href }: Serv
             Book Now
           </BookSessionButton>
         ) : (
-          <Link href={href || `/apply?program=${encodeURIComponent(title)}`} className="block w-full">
-            <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] rounded-none h-12 transition-colors duration-300">
+          <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] rounded-none h-12 transition-colors duration-300 block">
+            <Link href={href || `/apply?program=${encodeURIComponent(title)}`}>
               {href ? "Learn More" : "Get Started"}
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         )}
       </div>
     </div>

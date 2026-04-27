@@ -22,11 +22,11 @@ export default function acceleratorWeekend() {
           <p className="text-xl text-slate-300 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
             Break through writing blocks, organize your research, and build a concrete writing plan you’ll actually follow.
           </p>
-          <a href="https://buy.stripe.com/dissertation-accelerator" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="h-16 px-10 bg-secondary text-primary hover:bg-secondary/90 hover:scale-[1.02] transition-all font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a] text-lg shadow-2xl">
+          <Button asChild size="lg" className="h-16 px-10 bg-secondary text-primary hover:bg-secondary/90 hover:scale-[1.02] transition-all font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a] text-lg shadow-2xl">
+            <a href="https://buy.stripe.com/dissertation-accelerator" target="_blank" rel="noopener noreferrer">
               Register Now — $497
-            </Button>
-          </a>
+            </a>
+          </Button>
         </div>
       </section>
 
@@ -73,11 +73,11 @@ export default function acceleratorWeekend() {
               <div className="mt-12 pt-8 border-t border-white/10">
                  <p className="text-3xl font-bold text-secondary mb-2">$497</p>
                  <p className="text-xs uppercase tracking-widest opacity-60">Full Payment at Registration</p>
-                 <a href="https://buy.stripe.com/dissertation-accelerator" target="_blank" rel="noopener noreferrer" className="mt-8 block">
-                    <Button className="w-full h-14 bg-secondary text-primary font-bold uppercase tracking-widest rounded-none border-b-4 border-black/20">
+                 <Button asChild className="w-full h-14 bg-secondary text-primary font-bold uppercase tracking-widest rounded-none border-b-4 border-black/20 mt-8 block">
+                    <a href="https://buy.stripe.com/dissertation-accelerator" target="_blank" rel="noopener noreferrer">
                       Reserve Your Spot
-                    </Button>
-                 </a>
+                    </a>
+                 </Button>
               </div>
            </div>
         </div>

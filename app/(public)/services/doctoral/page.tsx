@@ -139,9 +139,9 @@ function DoctoralContent() {
               )) : (
                 <div className="col-span-2 py-20 text-center bg-slate-50 elevated-card border-t-8 border-secondary">
                    <p className="text-slate-500 font-serif italic">No matching programs found for &quot;{searchQuery}&quot;</p>
-                   <Link href="/services/doctoral">
-                      <Button variant="link" className="text-primary mt-4 font-bold uppercase tracking-widest text-[10px]">View All Programs</Button>
-                   </Link>
+                   <Button asChild variant="link" className="text-primary mt-4 font-bold uppercase tracking-widest text-[10px]">
+                      <Link href="/services/doctoral">View All Programs</Link>
+                   </Button>
                 </div>
               )}
             </div>
@@ -157,11 +157,11 @@ function DoctoralContent() {
                   <p className="text-sm opacity-80 leading-relaxed font-sans">operations@nexcellenceacademy.com</p>
                 </div>
               </div>
-              <Link href="/contact" className="mt-8 block">
-                <Button className="w-full bg-secondary text-primary hover:bg-secondary/90 hover:scale-[1.02] transition-all font-bold uppercase tracking-widest rounded-none h-14 border-b-4 border-[#c2820a]">
+              <Button asChild className="w-full bg-secondary text-primary hover:bg-secondary/90 hover:scale-[1.02] transition-all font-bold uppercase tracking-widest rounded-none h-14 border-b-4 border-[#c2820a] mt-8 block">
+                <Link href="/contact">
                   Enquire Now
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
 
             <div className="bg-[#0a192f] shadow-2xl p-10 text-white border-t-8 border-t-secondary rounded-none">

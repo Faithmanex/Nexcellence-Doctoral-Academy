@@ -41,16 +41,16 @@ export default function Dissertation90Day() {
             A structured, high-touch coaching program designed to take doctoral scholars from stuck to defended in 12 weeks.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-             <a href="https://buy.stripe.com/90-day-dissertation-full" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 hover:scale-[1.02] transition-all font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a]">
+            <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 hover:scale-[1.02] transition-all font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a]">
+              <a href="https://buy.stripe.com/90-day-dissertation-full" target="_blank" rel="noopener noreferrer">
                 Enroll Now — $3,997
-              </Button>
-            </a>
-            <Link href="/contact">
-              <Button size="lg" variant="outline" className="h-14 px-8 border-2 border-white text-white hover:bg-white hover:text-primary font-bold uppercase tracking-widest rounded-none bg-transparent hover:scale-[1.02] transition-all">
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="h-14 px-8 border-2 border-white text-white hover:bg-white hover:text-primary font-bold uppercase tracking-widest rounded-none bg-transparent hover:scale-[1.02] transition-all">
+              <Link href="/contact">
                 Payment Plan Options
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -119,11 +119,11 @@ export default function Dissertation90Day() {
                       <p className="text-sm font-medium text-primary">$1,497 deposit + $1,250 x 2 months</p>
                    </div>
                 </div>
-                <Link href="/contact" className="block">
-                   <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] h-12 rounded-none transition-colors duration-300">
+                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] h-12 rounded-none transition-colors duration-300 block">
+                  <Link href="/contact">
                      Inquire About Plans
-                   </Button>
-                </Link>
+                  </Link>
+                </Button>
              </div>
           </div>
         </div>
