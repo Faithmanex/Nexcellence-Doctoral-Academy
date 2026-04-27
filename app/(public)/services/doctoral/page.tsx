@@ -1,19 +1,18 @@
 'use client'
 
 import { Suspense } from "react"
-import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { BookSessionButton } from "@/components/BookSessionButton"
+import { ServiceCard } from "@/components/ServiceCard"
 import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle2, FileEdit, GraduationCap, Microscope, Book, Presentation, Mail, ArrowRight, Globe, Target, Calendar, Clock, Edit } from "lucide-react"
+import { CheckCircle2, FileEdit, GraduationCap, Microscope, Book, Presentation, Mail, Target, Clock, Edit } from "lucide-react"
 
 function DoctoralContent() {
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get("search")?.toLowerCase() || ""
 
-  const plans = [
+  const plans: { title: string; price: string; desc: string; icon: typeof Clock; type: "coaching" | "consultation"; href?: string }[] = [
     { 
       title: "90-Day Dissertation Completion Program",
       price: "$3,997",
@@ -126,37 +125,21 @@ function DoctoralContent() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 pt-6">
-              {filteredPlans.length > 0 ? filteredPlans.map(plan => {
-                const Icon = plan.icon;
-                return (
-                  <div key={plan.title} className="bg-white elevated-card p-10 group">
-                    <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-secondary/10 transition-colors">
-                      <Icon className="w-6 h-6 text-secondary" />
-                    </div>
-                    <h3 className="text-lg font-extrabold text-primary mb-4 font-sans uppercase tracking-widest">{plan.title}</h3>
-                    <p className="text-xs text-slate-500 mb-8 leading-relaxed font-light">{plan.desc}</p>
-                    <p className="font-bold text-2xl text-primary mb-6">{plan.price}</p>
-                    {plan.type === "consultation" ? (
-                      <BookSessionButton
-                        variant="outline"
-                        className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] rounded-none h-12"
-                      >
-                        Book Now
-                      </BookSessionButton>
-                    ) : (
-                      <Link href={plan.href || `/apply?program=${encodeURIComponent(plan.title)}`}>
-                        <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] rounded-none h-12">
-                          {plan.href ? "Learn More" : "Get Started"}
-                        </Button>
-                      </Link>
-                    )}
-                  </div>
-                );
-              }) : (
-                <div className="col-span-2 py-20 text-center bg-white elevated-card bg-slate-50">
+              {filteredPlans.length > 0 ? filteredPlans.map(plan => (
+                <ServiceCard
+                  key={plan.title}
+                  title={plan.title}
+                  price={plan.price}
+                  desc={plan.desc}
+                  icon={plan.icon}
+                  type={plan.type}
+                  href={plan.href}
+                />
+              )) : (
+                <div className="col-span-2 py-20 text-center bg-[#D6E4F0]/10 elevated-card">
                    <p className="text-slate-400 font-serif italic">No matching programs found for &quot;{searchQuery}&quot;</p>
                    <Link href="/services/doctoral">
-                      <Button variant="link" className="text-secondary mt-4 font-bold uppercase tracking-widest text-xs">View All Programs</Button>
+                      <Button variant="link" className="text-[#1B2A4A] mt-4 font-bold uppercase tracking-widest text-xs">View All Programs</Button>
                    </Link>
                 </div>
               )}
@@ -165,22 +148,22 @@ function DoctoralContent() {
 
           {/* Sidebar */}
           <div className="space-y-8">
-            <div className="bg-[#192f59] p-10 text-white">
+            <div className="bg-[#1B2A4A] p-10 text-white">
               <h3 className="text-xl font-bold uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Contact Info</h3>
               <div className="space-y-4">
                 <div className="flex gap-4">
-                  <Mail className="w-5 h-5 text-secondary shrink-0" />
+                  <Mail className="w-5 h-5 text-[#D6E4F0] shrink-0" />
                   <p className="text-sm opacity-80 leading-relaxed">operations@nexcellenceacademy.com</p>
                 </div>
               </div>
               <Link href="/contact" className="mt-8 block">
-                <Button className="w-full bg-secondary text-primary font-bold uppercase tracking-widest rounded-none h-14 border-b-4 border-[#c2820a]">
+                <Button className="w-full bg-secondary text-[#1B2A4A] font-bold uppercase tracking-widest rounded-none h-14 border-b-4 border-[#c2820a]">
                   Enquire Now
                 </Button>
               </Link>
             </div>
 
-            <div className="bg-slate-900 elevated-card p-10 text-white border-t-8 border-t-secondary">
+            <div className="bg-[#1B2A4A] elevated-card p-10 text-white border-t-8 border-t-[#D6E4F0]">
               <h3 className="text-xs font-bold uppercase tracking-widest mb-6 border-b border-white/10 pb-4 text-white/40">Our Expertise</h3>
               <div className="space-y-5">
                 {[
@@ -189,7 +172,7 @@ function DoctoralContent() {
                   { label: "Defense Readiness", icon: Presentation },
                 ].map(item => (
                   <div key={item.label} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-secondary" />
+                    <CheckCircle2 className="w-4 h-4 text-[#D6E4F0]" />
                     <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">{item.label}</span>
                   </div>
                 ))}
