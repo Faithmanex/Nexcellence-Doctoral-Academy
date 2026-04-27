@@ -95,7 +95,7 @@ function DoctoralContent() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Kingster Hero */}
-      <section className="relative h-[40vh] flex items-end overflow-hidden">
+      <section className="relative h-[45vh] flex items-end overflow-hidden">
         <Image 
           src="/images/doctoral.png" 
           alt="Doctoral Academy" 
@@ -107,39 +107,40 @@ function DoctoralContent() {
         <div className="container relative z-10 pb-12">
            <div className="flex items-center gap-4 mb-4">
               <div className="h-[2px] w-12 bg-secondary" />
-              <h4 className="text-secondary font-bold uppercase tracking-widest text-sm font-sans">Scholarly Excellence</h4>
+              <h4 className="text-secondary font-bold uppercase tracking-widest text-[10px] font-sans">Scholarly Excellence</h4>
             </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white font-serif uppercase tracking-tight">Doctoral Academy</h1>
+          <h1 className="text-3xl md:text-5xl font-bold text-white font-serif uppercase tracking-tight">Doctoral Academy</h1>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-12 container max-w-7xl px-6">
+      <section className="py-20 container max-w-7xl px-4 md:px-6">
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-8">
-            <h2 className="text-xl md:text-2xl font-bold text-primary font-serif leading-tight">
-              Expert Doctoral Support <br/> at Every Stage.
+            <h2 className="text-2xl md:text-3xl font-bold text-primary font-serif leading-tight italic">
+              Expert Doctoral Support <br className="hidden md:block" /> at Every Stage.
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed">
               From your first chapter to your final defence — coaching, editing, and research support designed for doctoral scholars who are serious about finishing. Clarity, accountability, and expert guidance — every step of the way.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-6 pt-6">
+            <div className="grid sm:grid-cols-2 gap-6 pt-6 items-stretch">
               {filteredPlans.length > 0 ? filteredPlans.map(plan => (
-                <ServiceCard
-                  key={plan.title}
-                  title={plan.title}
-                  price={plan.price}
-                  desc={plan.desc}
-                  icon={plan.icon}
-                  type={plan.type}
-                  href={plan.href}
-                />
+                <div key={plan.title} className="h-full">
+                  <ServiceCard
+                    title={plan.title}
+                    price={plan.price}
+                    desc={plan.desc}
+                    icon={plan.icon}
+                    type={plan.type}
+                    href={plan.href}
+                  />
+                </div>
               )) : (
-                <div className="col-span-2 py-20 text-center bg-[#D6E4F0]/10 elevated-card">
-                   <p className="text-slate-400 font-serif italic">No matching programs found for &quot;{searchQuery}&quot;</p>
+                <div className="col-span-2 py-20 text-center bg-slate-50 elevated-card border-t-8 border-secondary">
+                   <p className="text-slate-500 font-serif italic">No matching programs found for &quot;{searchQuery}&quot;</p>
                    <Link href="/services/doctoral">
-                      <Button variant="link" className="text-[#1B2A4A] mt-4 font-bold uppercase tracking-widest text-xs">View All Programs</Button>
+                      <Button variant="link" className="text-primary mt-4 font-bold uppercase tracking-widest text-[10px]">View All Programs</Button>
                    </Link>
                 </div>
               )}
@@ -148,23 +149,23 @@ function DoctoralContent() {
 
           {/* Sidebar */}
           <div className="space-y-8">
-            <div className="bg-[#1B2A4A] p-10 text-white">
-              <h3 className="text-xl font-bold uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Contact Info</h3>
+            <div className="bg-[#0a192f] p-10 text-white rounded-none shadow-2xl">
+              <h3 className="text-xl font-bold uppercase tracking-widest mb-6 border-b border-white/10 pb-4 font-sans">Contact Info</h3>
               <div className="space-y-4">
                 <div className="flex gap-4">
-                  <Mail className="w-5 h-5 text-[#D6E4F0] shrink-0" />
-                  <p className="text-sm opacity-80 leading-relaxed">operations@nexcellenceacademy.com</p>
+                  <Mail className="w-5 h-5 text-secondary shrink-0" />
+                  <p className="text-sm opacity-80 leading-relaxed font-sans">operations@nexcellenceacademy.com</p>
                 </div>
               </div>
               <Link href="/contact" className="mt-8 block">
-                <Button className="w-full bg-secondary text-[#1B2A4A] font-bold uppercase tracking-widest rounded-none h-14 border-b-4 border-[#c2820a]">
+                <Button className="w-full bg-secondary text-primary hover:bg-secondary/90 hover:scale-[1.02] transition-all font-bold uppercase tracking-widest rounded-none h-14 border-b-4 border-[#c2820a]">
                   Enquire Now
                 </Button>
               </Link>
             </div>
 
-            <div className="bg-[#1B2A4A] elevated-card p-10 text-white border-t-8 border-t-[#D6E4F0]">
-              <h3 className="text-xs font-bold uppercase tracking-widest mb-6 border-b border-white/10 pb-4 text-white/40">Our Expertise</h3>
+            <div className="bg-[#0a192f] shadow-2xl p-10 text-white border-t-8 border-t-secondary rounded-none">
+              <h3 className="text-[10px] font-bold uppercase tracking-widest mb-6 border-b border-white/10 pb-4 text-white/40">Our Expertise</h3>
               <div className="space-y-5">
                 {[
                   { label: "Methodology Alignment", icon: Target },
@@ -172,7 +173,7 @@ function DoctoralContent() {
                   { label: "Defense Readiness", icon: Presentation },
                 ].map(item => (
                   <div key={item.label} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-[#D6E4F0]" />
+                    <CheckCircle2 className="w-4 h-4 text-secondary" />
                     <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">{item.label}</span>
                   </div>
                 ))}
@@ -188,7 +189,7 @@ function DoctoralContent() {
 function LoadingState() {
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="relative h-[40vh] bg-[#0a192f] flex items-end">
+      <section className="relative h-[45vh] bg-[#0a192f] flex items-end">
         <div className="container relative z-10 pb-12">
           <div className="h-[2px] w-12 bg-secondary mb-4" />
           <div className="h-8 w-48 bg-white/20 rounded animate-pulse" />
