@@ -19,7 +19,8 @@ function DoctoralContent() {
       price: "$3,997",
       desc: "Comprehensive structure and coaching to finish your dissertation in 90 days. Payment plans available.",
       icon: Clock,
-      type: "coaching"
+      type: "coaching",
+      href: "/services/doctoral/90-day"
     },
     { 
       title: "Dissertation Success Package",
@@ -54,7 +55,8 @@ function DoctoralContent() {
       price: "$497",
       desc: "Intensive weekend workshop to rapidly advance your dissertation progress.",
       icon: Target,
-      type: "coaching"
+      type: "coaching",
+      href: "/services/doctoral/accelerator"
     },
     { 
       title: "Monthly Dissertation Coaching", 
@@ -142,9 +144,9 @@ function DoctoralContent() {
                         Book Now
                       </BookSessionButton>
                     ) : (
-                      <Link href={`/apply?program=${encodeURIComponent(plan.title)}`}>
+                      <Link href={plan.href || `/apply?program=${encodeURIComponent(plan.title)}`}>
                         <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] rounded-none h-12">
-                          Get Started
+                          {plan.href ? "Learn More" : "Get Started"}
                         </Button>
                       </Link>
                     )}

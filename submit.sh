@@ -1,1 +1,0 @@
-echo "Submit dummy script"
