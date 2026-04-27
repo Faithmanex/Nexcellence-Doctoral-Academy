@@ -4,9 +4,10 @@ import { Suspense } from "react"
 import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
+import { BookSessionButton } from "@/components/BookSessionButton"
 import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle2, FileEdit, GraduationCap, Microscope, Book, Presentation, Mail, ArrowRight, Globe, Target } from "lucide-react"
+import { CheckCircle2, FileEdit, GraduationCap, Microscope, Book, Presentation, Mail, ArrowRight, Globe, Target, Calendar, Clock, Edit } from "lucide-react"
 
 function DoctoralContent() {
   const searchParams = useSearchParams()
@@ -14,28 +15,76 @@ function DoctoralContent() {
 
   const plans = [
     { 
-      title: "Dissertation Strategy Session", 
-      price: "$250",
-      desc: "One focused 60-minute session to cut through the confusion and build a clear path forward.",
-      icon: Target
+      title: "90-Day Dissertation Completion Program",
+      price: "$3,997",
+      desc: "Comprehensive structure and coaching to finish your dissertation in 90 days. Payment plans available.",
+      icon: Clock,
+      type: "coaching",
+      href: "/services/doctoral/90-day"
     },
     { 
-      title: "Research Consultation", 
-      price: "$300",
-      desc: "Methodological support: research design, data analysis approach, and theoretical alignment.",
-      icon: Microscope 
+      title: "Dissertation Success Package",
+      price: "$1,200",
+      desc: "Complete support package through your entire dissertation process. Payment plans available.",
+      icon: Book,
+      type: "coaching"
+    },
+    {
+      title: "Full Dissertation Editing",
+      price: "$2,500 - $3,000",
+      desc: "Comprehensive editing for the entire dissertation, ensuring scholarly excellence and format compliance.",
+      icon: FileEdit,
+      type: "coaching"
+    },
+    {
+      title: "Proposal Editing",
+      price: "$1,100",
+      desc: "Rigorous review and editing of your dissertation proposal to ensure it's defense-ready.",
+      icon: Edit,
+      type: "coaching"
+    },
+    {
+      title: "Chapter Editing",
+      price: "$500",
+      desc: "Professional editing for argument clarity, structure, and academic tone per chapter.",
+      icon: FileEdit,
+      type: "coaching"
+    },
+    {
+      title: "Dissertation Accelerator Weekend",
+      price: "$497",
+      desc: "Intensive weekend workshop to rapidly advance your dissertation progress.",
+      icon: Target,
+      type: "coaching",
+      href: "/services/doctoral/accelerator"
     },
     { 
       title: "Monthly Dissertation Coaching", 
       price: "$350/mo",
       desc: "Ongoing monthly support for scholars who need consistent accountability and feedback.",
-      icon: GraduationCap
+      icon: GraduationCap,
+      type: "coaching"
     },
     { 
-      title: "Chapter Editing", 
-      price: "$500",
-      desc: "Professional editing for argument clarity, structure, and academic tone.",
-      icon: FileEdit
+      title: "Defense Preparation Coaching",
+      price: "$350",
+      desc: "Mock defense sessions and strategic preparation to ensure you defend with confidence.",
+      icon: Presentation,
+      type: "consultation"
+    },
+    {
+      title: "Research Consultation",
+      price: "$300",
+      desc: "Methodological support: research design, data analysis approach, and theoretical alignment.",
+      icon: Microscope,
+      type: "consultation"
+    },
+    {
+      title: "Dissertation Strategy Session",
+      price: "$250",
+      desc: "One focused 60-minute session to cut through the confusion and build a clear path forward.",
+      icon: Target,
+      type: "consultation"
     }
   ]
 
@@ -77,23 +126,35 @@ function DoctoralContent() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 pt-6">
-              {filteredPlans.length > 0 ? filteredPlans.map(plan => (
-                <div key={plan.title} className="bg-white elevated-card p-10 group">
-                  <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-secondary/10 transition-colors">
-                    <Book className="w-6 h-6 text-secondary" />
+              {filteredPlans.length > 0 ? filteredPlans.map(plan => {
+                const Icon = plan.icon;
+                return (
+                  <div key={plan.title} className="bg-white elevated-card p-10 group">
+                    <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-secondary/10 transition-colors">
+                      <Icon className="w-6 h-6 text-secondary" />
+                    </div>
+                    <h3 className="text-lg font-extrabold text-primary mb-4 font-sans uppercase tracking-widest">{plan.title}</h3>
+                    <p className="text-xs text-slate-500 mb-8 leading-relaxed font-light">{plan.desc}</p>
+                    <p className="font-bold text-2xl text-primary mb-6">{plan.price}</p>
+                    {plan.type === "consultation" ? (
+                      <BookSessionButton
+                        variant="outline"
+                        className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] rounded-none h-12"
+                      >
+                        Book Now
+                      </BookSessionButton>
+                    ) : (
+                      <Link href={plan.href || `/apply?program=${encodeURIComponent(plan.title)}`}>
+                        <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] rounded-none h-12">
+                          {plan.href ? "Learn More" : "Get Started"}
+                        </Button>
+                      </Link>
+                    )}
                   </div>
-                  <h3 className="text-lg font-extrabold text-primary mb-4 font-sans uppercase tracking-widest">{plan.title}</h3>
-                  <p className="text-xs text-slate-500 mb-8 leading-relaxed font-light">{plan.desc}</p>
-                  <p className="font-bold text-2xl text-primary mb-6">{plan.price}</p>
-                  <Link href="/apply">
-                    <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-widest text-[10px] rounded-none h-12">
-                      Get Started
-                    </Button>
-                  </Link>
-                </div>
-              )) : (
+                );
+              }) : (
                 <div className="col-span-2 py-20 text-center bg-white elevated-card bg-slate-50">
-                   <p className="text-slate-400 font-serif italic">No matching programs found for "{searchQuery}"</p>
+                   <p className="text-slate-400 font-serif italic">No matching programs found for &quot;{searchQuery}&quot;</p>
                    <Link href="/services/doctoral">
                       <Button variant="link" className="text-secondary mt-4 font-bold uppercase tracking-widest text-xs">View All Programs</Button>
                    </Link>
