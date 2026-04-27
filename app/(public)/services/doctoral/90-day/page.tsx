@@ -36,8 +36,8 @@ export default function Dissertation90Day() {
         <div className="absolute inset-0 bg-[#0a192f]/85" />
         <div className="container relative z-10 text-center max-w-4xl mx-auto">
           <div className="inline-block px-4 py-1 bg-secondary text-primary font-bold uppercase tracking-widest text-[10px] mb-6">High-Touch Coaching</div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white font-serif uppercase tracking-tight mb-6">Finish Your Dissertation <br /> in 90 Days.</h1>
-          <p className="text-xl text-slate-300 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif uppercase tracking-tight mb-5 text-balance">Finish Your Dissertation in 90 Days.</h1>
+          <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-8 max-w-2xl mx-auto">
             A structured, high-touch coaching program designed to take doctoral scholars from stuck to defended in 12 weeks.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -46,7 +46,7 @@ export default function Dissertation90Day() {
                 Enroll Now — $3,997
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="h-14 px-8 border-2 border-white text-white hover:bg-white hover:text-primary font-bold uppercase tracking-widest rounded-none bg-transparent hover:scale-[1.02] transition-all">
+            <Button asChild size="lg" className="h-14 px-8 border-2 border-white text-white hover:bg-white hover:text-primary font-bold uppercase tracking-widest rounded-none bg-transparent hover:scale-[1.02] transition-all">
               <Link href="/contact">
                 Payment Plan Options
               </Link>
