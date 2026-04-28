@@ -18,9 +18,9 @@ export default function acceleratorWeekend() {
         <div className="absolute inset-0 bg-[#0a192f]/85" />
         <div className="container relative z-10 text-center max-w-4xl mx-auto">
           <div className="inline-block px-4 py-1 bg-secondary text-primary font-bold uppercase tracking-widest text-[10px] mb-6 rounded-none">Intensive Two-Day Event</div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white font-serif uppercase tracking-tight mb-6">Two Days. Total Clarity. <br /> Real Progress.</h1>
-          <p className="text-xl text-slate-300 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
-            Break through writing blocks, organize your research, and build a concrete writing plan you’ll actually follow.
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-serif uppercase tracking-tight mb-5 text-balance">Two Days. Total Clarity. Real Progress.</h1>
+          <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-8 max-w-2xl mx-auto">
+            Break through writing blocks, organize your research, and build a concrete writing plan you'll actually follow.
           </p>
           <Button asChild size="lg" className="h-16 px-10 bg-secondary text-primary hover:bg-secondary/90 hover:scale-[1.02] transition-all font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a] text-lg shadow-2xl">
             <a href="https://buy.stripe.com/dissertation-accelerator" target="_blank" rel="noopener noreferrer">
