@@ -64,7 +64,7 @@ export default function EliteProgramPage() {
   return (
     <div className="flex flex-col min-h-screen font-sans">
       {/* Cinematic Hero */}
-      <section className="relative min-h-[60vh] md:h-[70vh] flex items-center overflow-hidden">
+      <section className="relative h-[35vh] flex items-end overflow-hidden">
         <Image 
           src="/images/hero.png" 
           alt="Elite Academic Transformation" 
@@ -74,30 +74,14 @@ export default function EliteProgramPage() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a192f] via-[#0a192f]/80 to-transparent" />
-        <div className="container relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-12 md:pt-0">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="h-[2px] w-16 bg-secondary" />
-            <h4 className="text-secondary font-bold uppercase tracking-[0.3em] text-sm">Flagship Engagement</h4>
+        <div className="container relative z-10 pb-12">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-[2px] w-12 bg-secondary" />
+            <h4 className="text-secondary font-bold uppercase tracking-widest text-[10px] font-sans">Flagship Engagement</h4>
           </div>
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white font-serif tracking-tight leading-tight mb-4 max-w-3xl">
-            6-Month Elite <br />
-            <span className="italic text-secondary text-xl md:text-3xl">Academic Transformation</span> <br /> Program™
+          <h1 className="text-2xl md:text-4xl font-bold text-white font-serif tracking-tight leading-tight">
+            6-Month Elite Academic Transformation Program™
           </h1>
-          <p className="text-sm md:text-base lg:text-lg text-gray-300 font-light leading-relaxed mb-8 max-w-2xl opacity-90">
-            Our most exclusive, end-to-end consulting experience. We don't just help you finish; we help you dominate your field and establish lasting scholarly authority.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6">
-            <Link href="#pricing">
-              <Button size="lg" className="h-16 px-10 bg-secondary text-primary hover:bg-secondary/90 font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a] text-lg">
-                SECURE YOUR SEAT
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button size="lg" variant="outline" className="h-16 px-10 border-2 border-white text-white hover:bg-white hover:text-primary font-bold uppercase tracking-widest rounded-none bg-transparent text-lg">
-                BOOK EVALUATION
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 

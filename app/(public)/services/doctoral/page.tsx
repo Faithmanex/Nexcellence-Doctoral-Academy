@@ -95,7 +95,7 @@ function DoctoralContent() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Kingster Hero */}
-      <section className="relative h-[45vh] flex items-end overflow-hidden">
+      <section className="relative h-[35vh] flex items-end overflow-hidden">
         <Image 
           src="/images/doctoral.png" 
           alt="Doctoral Academy" 
@@ -109,7 +109,7 @@ function DoctoralContent() {
               <div className="h-[2px] w-12 bg-secondary" />
               <h4 className="text-secondary font-bold uppercase tracking-widest text-[10px] font-sans">Scholarly Excellence</h4>
             </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-white font-serif uppercase tracking-tight">Doctoral Academy</h1>
+          <h1 className="text-2xl md:text-4xl font-bold text-white font-serif uppercase tracking-tight">Doctoral Academy</h1>
         </div>
       </section>
 

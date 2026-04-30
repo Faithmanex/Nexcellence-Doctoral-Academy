@@ -1,7 +1,8 @@
+import { ServiceCard } from "@/components/ServiceCard"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle2, ShieldCheck, Zap, Briefcase, Globe, ArrowRight } from "lucide-react"
+import { CheckCircle2, ShieldCheck, Zap, Briefcase } from "lucide-react"
 
 export default function LeadershipCoaching() {
   const offerings = [
@@ -9,26 +10,29 @@ export default function LeadershipCoaching() {
       title: "Academic Leadership Intensive", 
       price: "$2,500",
       desc: "Structured engagement for leaders navigating institutional change or strategic planning.",
-      icon: ShieldCheck
+      icon: ShieldCheck,
+      type: "coaching" as const
     },
     { 
       title: "1:1 Academic Strategy Session", 
       price: "$250",
       desc: "60-minute high-level advisory session for leaders who need an external perspective.",
-      icon: Zap
+      icon: Zap,
+      type: "coaching" as const
     },
     { 
       title: "Monthly Leadership Advisory", 
       price: "$1,200/mo",
       desc: "Ongoing monthly engagement for consistent strategic support and trusted advisory.",
-      icon: Briefcase
+      icon: Briefcase,
+      type: "coaching" as const
     }
   ]
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Kingster Hero */}
-      <section className="relative h-[40vh] flex items-end overflow-hidden">
+      <section className="relative h-[35vh] flex items-end overflow-hidden">
         <Image 
           src="/images/leadership.png" 
           alt="Academic Leadership" 
@@ -40,9 +44,9 @@ export default function LeadershipCoaching() {
         <div className="container relative z-10 pb-12">
            <div className="flex items-center gap-4 mb-4">
               <div className="h-[2px] w-12 bg-secondary" />
-              <h4 className="text-secondary font-bold uppercase tracking-widest text-sm font-sans">Executive Services</h4>
+              <h4 className="text-secondary font-bold uppercase tracking-widest text-[10px] font-sans">Executive Services</h4>
             </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white font-serif uppercase tracking-tight text-balance">Academic Leadership & Coaching</h1>
+          <h1 className="text-2xl md:text-4xl font-bold text-white font-serif uppercase tracking-tight text-balance">Academic Leadership & Coaching</h1>
         </div>
       </section>
 
@@ -57,25 +61,16 @@ export default function LeadershipCoaching() {
               Executive coaching and strategic consulting for academic administrators, department chairs, deans, and faculty leaders who want to build high-performing, mission-aligned academic environments.
             </p>
             
-            <div className="space-y-6 pt-6">
+            <div className="grid md:grid-cols-2 gap-6 pt-6 items-stretch">
               {offerings.map(item => (
-                <div key={item.title} className="elevated-card p-10 flex flex-col md:flex-row gap-8 group items-center bg-white">
-                  <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-secondary/10 transition-colors">
-                    <item.icon className="w-8 h-8 text-primary group-hover:text-secondary" />
-                  </div>
-                  <div className="flex-1 text-center md:text-left">
-                    <h3 className="text-lg font-extrabold text-primary mb-2 font-sans uppercase tracking-widest">{item.title}</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed font-light">{item.desc}</p>
-                  </div>
-                  <div className="text-center md:text-right shrink-0 bg-slate-50 p-6 rounded-2xl group-hover:bg-secondary/5 transition-colors">
-                    <p className="font-bold text-2xl text-primary mb-4">{item.price}</p>
-                    <Link href="/apply">
-                      <Button className="bg-primary text-white font-bold uppercase tracking-widest text-[10px] rounded-none px-8 h-12 hover:bg-secondary hover:text-primary transition-all border-b-4 border-black/20">
-                        Enquire
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
+                <ServiceCard
+                  key={item.title}
+                  title={item.title}
+                  price={item.price}
+                  desc={item.desc}
+                  icon={item.icon}
+                  type={item.type}
+                />
               ))}
             </div>
           </div>

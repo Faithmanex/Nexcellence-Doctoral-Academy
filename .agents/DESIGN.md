@@ -42,7 +42,7 @@ Used for highlights, accents, call-to-action buttons, and progress indicators.
 #### Type Scale
 | Role | Size | Weight | Tracking | Case | Font |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Hero Heading** | `3rem` (5xl) | 700/800 | Tight | Uppercase | Serif |
+| **Hero Heading** | `2.25rem` (4xl) | 700/800 | Tight | Uppercase | Serif |
 | **Section Heading** | `1.5rem` (2xl) | 700 | Normal | Mixed (Italic) | Serif |
 | **Nav Link** | `13px` | 700 | Wide | Uppercase | Sans |
 | **Label / Accent** | `10px` | 700 | Widest | Uppercase | Sans |
@@ -100,7 +100,7 @@ Used for highlights, accents, call-to-action buttons, and progress indicators.
 ## 📏 Design Rules & Patterns
 
 ### Spacing & Layout
-- **Hero Height**: Typically `45vh`.
+- **Hero Height**: Typically `35vh`.
 - **Section Padding**: `py-20` (80px) is the standard vertical breathing room.
 - **Container**: Max width `7xl` (1280px) centered.
 

@@ -1,19 +1,24 @@
+import { ServiceCard } from "@/components/ServiceCard"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle2, BookOpen, PenTool, LayoutTemplate, ArrowRight } from "lucide-react"
+import { CheckCircle2, BookOpen, PenTool, LayoutTemplate, Users } from "lucide-react"
 
 export default function PublishingSupport() {
   const academicServices = [
     {
       title: "Proposal Editing",
       price: "$1,100",
-      desc: "Strategic editing for Chapters 1-3 to ensure scholarly rigour and committee alignment."
+      desc: "Strategic editing for Chapters 1-3 to ensure scholarly rigour and committee alignment.",
+      icon: PenTool,
+      type: "coaching" as const
     },
     {
       title: "Full Dissertation Editing",
       price: "Quote Needed",
-      desc: "Complete editorial review: argument flow, academic conventions, and formatting."
+      desc: "Complete editorial review: argument flow, academic conventions, and formatting.",
+      icon: BookOpen,
+      type: "coaching" as const
     }
   ]
 
@@ -21,19 +26,23 @@ export default function PublishingSupport() {
     {
       title: "Custom Course Design",
       price: "$1,200",
-      desc: "Full course creation: syllabus, modules, learning outcomes, and assessments."
+      desc: "Full course creation: syllabus, modules, learning outcomes, and assessments.",
+      icon: LayoutTemplate,
+      type: "coaching" as const
     },
     {
       title: "Program Design",
       price: "$4,500",
-      desc: "Multi-course curriculum development from concept to delivery."
+      desc: "Multi-course curriculum development from concept to delivery.",
+      icon: Users,
+      type: "coaching" as const
     }
   ]
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Kingster Hero */}
-      <section className="relative h-[50vh] flex items-end overflow-hidden">
+      <section className="relative h-[35vh] flex items-end overflow-hidden">
         <Image 
           src="/images/hero.png" 
           alt="Publishing" 
@@ -45,9 +54,9 @@ export default function PublishingSupport() {
         <div className="container relative z-10 pb-12">
            <div className="flex items-center gap-4 mb-4">
               <div className="h-[2px] w-12 bg-secondary" />
-              <h4 className="text-secondary font-bold uppercase tracking-widest text-sm font-sans">Editorial & Instruction</h4>
+              <h4 className="text-secondary font-bold uppercase tracking-widest text-[10px] font-sans">Editorial & Instruction</h4>
             </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white font-serif uppercase tracking-tight">Research & Publishing</h1>
+          <h1 className="text-2xl md:text-4xl font-bold text-white font-serif uppercase tracking-tight">Research & Publishing</h1>
         </div>
       </section>
 
@@ -66,18 +75,16 @@ export default function PublishingSupport() {
               <p className="text-muted-foreground text-lg leading-relaxed">
                 Deep structural editing, journal targeting, and manuscript peer-review preparation for high-stakes academic writing.
               </p>
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-8 items-stretch">
                 {academicServices.map(s => (
-                  <div key={s.title} className="p-8 border bg-card flex flex-col hover:border-secondary transition-colors group">
-                    <h3 className="text-xl font-extrabold text-primary mb-2 font-sans uppercase tracking-widest">{s.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-6 flex-1 italic">"{s.desc}"</p>
-                    <div className="flex items-center justify-between border-t pt-4">
-                       <span className="font-bold text-primary">{s.price}</span>
-                       <Link href="/contact" className="text-xs font-bold uppercase tracking-widest text-secondary group-hover:text-primary transition-colors flex items-center">
-                         Enquire <ArrowRight className="w-3 h-3 ml-1" />
-                       </Link>
-                    </div>
-                  </div>
+                  <ServiceCard
+                    key={s.title}
+                    title={s.title}
+                    price={s.price}
+                    desc={s.desc}
+                    icon={s.icon}
+                    type={s.type}
+                  />
                 ))}
               </div>
             </div>
@@ -91,18 +98,16 @@ export default function PublishingSupport() {
               <p className="text-muted-foreground text-lg leading-relaxed">
                 Build courses that actually teach. From single syllabi to full degree programs, we map expertise to accreditation.
               </p>
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-8 items-stretch">
                 {curriculumServices.map(s => (
-                  <div key={s.title} className="p-8 border bg-card flex flex-col hover:border-secondary transition-colors group">
-                    <h3 className="text-xl font-extrabold text-primary mb-2 font-sans uppercase tracking-widest">{s.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-6 flex-1 italic">"{s.desc}"</p>
-                    <div className="flex items-center justify-between border-t pt-4">
-                       <span className="font-bold text-primary">{s.price}</span>
-                       <Link href="/contact" className="text-xs font-bold uppercase tracking-widest text-secondary group-hover:text-primary transition-colors flex items-center">
-                         Enquire <ArrowRight className="w-3 h-3 ml-1" />
-                       </Link>
-                    </div>
-                  </div>
+                  <ServiceCard
+                    key={s.title}
+                    title={s.title}
+                    price={s.price}
+                    desc={s.desc}
+                    icon={s.icon}
+                    type={s.type}
+                  />
                 ))}
               </div>
             </div>
