@@ -131,8 +131,30 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
-      
-      {/* Social Proof Bar (Parallax Stats imitation) */}
+
+      {/* Elite Callout Section */}
+      <section className="py-20 bg-slate-50 border-y border-slate-100">
+        <div className="container text-center max-w-4xl px-6">
+          <Reveal delay={0.2} direction="up">
+            <div className="bg-primary elevated-card p-12 md:p-16 max-w-3xl mx-auto border-t-8 border-t-secondary">
+              <div className="inline-flex items-center justify-center p-4 bg-secondary/10 rounded-2xl mb-8 text-secondary">
+                <Trophy className="w-10 h-10" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold font-serif mb-6 text-white italic">Ready for a Full Transformation?</h2>
+              <p className="text-base text-white mb-10 leading-relaxed max-w-2xl mx-auto font-light">
+                The <strong>6-Month Elite Academic Transformation Program™</strong> is our most exclusive engagement — combining doctoral coaching, faculty positioning, and leadership development into one structured journey. <strong>Limited enrolments per cohort.</strong>
+              </p> 
+              <Link href="/elite">
+                <Button size="lg" className="h-16 px-12 bg-secondary text-primary hover:bg-secondary/90 font-bold uppercase tracking-widest rounded-none border-b-4 border-[#c2820a] transition-all group">
+                  Explore the Elite Program <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+            
+      {/* Social Proof Bar (Parallax Stats imitation) */} 
       <section className="bg-[url('/images/doctoral.png')] bg-cover bg-center bg-fixed bg-no-repeat relative py-24 border-y-8 border-secondary" role="img" aria-label="Decorative background showing academic setting">
          <div className="absolute inset-0 bg-[#192f59]/90" aria-hidden="true" />
          <div className="container relative z-10">
@@ -167,28 +189,6 @@ export default function HomePage() {
              </Reveal>
            </div>
          </div>
-      </section>
-
-      {/* Elite Callout Section */}
-      <section className="py-20 bg-slate-50 border-y border-slate-100">
-        <div className="container text-center max-w-4xl px-6">
-          <Reveal delay={0.2} direction="up">
-            <div className="bg-white elevated-card p-12 md:p-16 max-w-3xl mx-auto border-t-8 border-t-secondary">
-              <div className="inline-flex items-center justify-center p-4 bg-secondary/10 rounded-2xl mb-8 text-secondary">
-                <Trophy className="w-10 h-10" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold font-serif mb-6 text-primary italic">Ready for a Full Transformation?</h2>
-              <p className="text-base text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto font-light">
-                The <strong>6-Month Elite Academic Transformation Program™</strong> is our most exclusive engagement — combining doctoral coaching, faculty positioning, and leadership development into one structured journey.
-              </p>
-              <Link href="/elite">
-                <Button size="lg" className="h-16 px-12 bg-primary hover:bg-secondary hover:text-primary text-white font-bold uppercase tracking-widest rounded-none transition-all group">
-                  Apply for Cohort Launch <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </div>
-          </Reveal>
-        </div>
       </section>
 
       {/* Footer pre-banner */}
