@@ -64,7 +64,7 @@ export default function EliteProgramPage() {
   return (
     <div className="flex flex-col min-h-screen font-sans">
       {/* Cinematic Hero */}
-      <section className="relative h-[35vh] flex items-end overflow-hidden">
+      <section className="relative pt-32 md:pt-40 pb-12 flex items-end overflow-hidden">
         <Image 
           src="/images/hero.png" 
           alt="Elite Academic Transformation" 
@@ -74,7 +74,7 @@ export default function EliteProgramPage() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a192f] via-[#0a192f]/80 to-transparent" />
-        <div className="container relative z-10 pb-12">
+        <div className="container relative z-20">
           <div className="flex items-center gap-4 mb-4">
             <div className="h-[2px] w-12 bg-secondary" />
             <h4 className="text-secondary font-bold uppercase tracking-widest text-[10px] font-sans">Flagship Engagement</h4>

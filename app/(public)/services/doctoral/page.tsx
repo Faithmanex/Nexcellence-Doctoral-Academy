@@ -95,7 +95,7 @@ function DoctoralContent() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Kingster Hero */}
-      <section className="relative min-h-[35vh] flex items-end overflow-hidden">
+      <section className="relative pt-32 md:pt-40 pb-12 flex items-end overflow-hidden">
         <Image 
           src="/images/doctoral.png" 
           alt="Doctoral Academy" 

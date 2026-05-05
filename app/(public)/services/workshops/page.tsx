@@ -32,7 +32,7 @@ export default function WorkshopsPage() {
   return (
     <div className="flex flex-col min-h-screen font-sans">
       {/* Hero Section */}
-      <section className="relative h-[35vh] flex items-end overflow-hidden">
+      <section className="relative pt-32 md:pt-40 pb-12 flex items-end overflow-hidden">
         <Image 
           src="/images/leadership.png" 
           alt="Institutional Services" 
@@ -41,7 +41,7 @@ export default function WorkshopsPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#0a192f]/85" />
-        <div className="container relative z-10 pb-12">
+        <div className="container relative z-20">
            <div className="flex items-center gap-4 mb-4">
               <div className="h-[2px] w-12 bg-secondary" />
               <h4 className="text-secondary font-bold uppercase tracking-widest text-[10px] font-sans">Empowering Your Team</h4>

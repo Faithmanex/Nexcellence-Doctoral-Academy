@@ -21,7 +21,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[#0a192f]/85 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f]/60 via-transparent to-[#0a192f]/95" />
         
-        <div className="container relative z-10 text-center max-w-5xl flex-1 flex flex-col justify-center">
+        <div className="container relative z-20 text-center max-w-5xl flex-1 flex flex-col justify-center">
           <Reveal delay={0.1}>
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white font-serif tracking-tight leading-tight mb-4 max-w-3xl mx-auto drop-shadow-2xl">
               Advancing Scholars into <br />

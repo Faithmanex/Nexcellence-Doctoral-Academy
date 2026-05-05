@@ -170,7 +170,7 @@ function TopicsContent() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-end overflow-hidden">
+      <section className="relative pt-32 md:pt-40 pb-12 flex items-end overflow-hidden">
         <Image 
           src="/images/doctoral.png" 
           alt="Dissertation Topics" 
@@ -179,7 +179,7 @@ function TopicsContent() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#0a192f]/80" />
-        <div className="container relative z-10 pb-12">
+        <div className="container relative z-20">
            <div className="flex items-center gap-4 mb-4">
               <div className="h-[2px] w-12 bg-secondary" />
               <h4 className="text-secondary font-bold uppercase tracking-widest text-sm font-sans">Doctoral Academy</h4>
@@ -324,8 +324,8 @@ function TopicsContent() {
 function LoadingState() {
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="relative h-[40vh] bg-[#0a192f] flex items-end">
-        <div className="container relative z-10 pb-12">
+      <section className="relative pt-32 md:pt-40 pb-12 bg-[#0a192f] flex items-end">
+        <div className="container relative z-20">
           <div className="h-[2px] w-12 bg-secondary mb-4" />
           <div className="h-8 w-48 bg-white/20 rounded animate-pulse" />
         </div>

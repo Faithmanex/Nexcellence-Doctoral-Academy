@@ -52,7 +52,7 @@ export default function ServicesHub() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Kingster Hero */}
-      <section className="relative h-[40vh] flex items-end overflow-hidden">
+      <section className="relative pt-32 md:pt-40 pb-12 flex items-end overflow-hidden">
         <Image 
           src="/images/hero.png" 
           alt="Services Hub" 
@@ -61,7 +61,7 @@ export default function ServicesHub() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#0a192f]/80" />
-        <div className="container relative z-10 pb-12">
+        <div className="container relative z-20">
            <div className="flex items-center gap-4 mb-4">
               <div className="h-[2px] w-12 bg-secondary" />
               <h4 className="text-secondary font-bold uppercase tracking-widest text-sm font-sans">Strategic Scaffolding</h4>

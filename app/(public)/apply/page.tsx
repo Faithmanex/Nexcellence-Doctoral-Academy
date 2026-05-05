@@ -93,7 +93,7 @@ function ApplyForm() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Premium Hero */}
-      <section className="relative h-[45vh] flex items-end overflow-hidden">
+      <section className="relative pt-32 md:pt-40 pb-16 flex items-end overflow-hidden">
         <Image 
           src="/images/hero.png" 
           alt="Apply to Nexcellence Academy" 
@@ -103,7 +103,7 @@ function ApplyForm() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f] via-[#0a192f]/60 to-transparent" />
-        <div className="container relative z-10 pb-16 px-6 max-w-7xl mx-auto">
+        <div className="container relative z-20 px-6 max-w-7xl mx-auto">
            <div className="flex items-center gap-4 mb-6">
               <div className="h-[2px] w-12 bg-secondary" />
               <h4 className="text-secondary font-bold uppercase tracking-[0.3em] text-xs font-sans">Admissions</h4>
