@@ -64,7 +64,7 @@ export function Header() {
       </div>
       
       {/* Main Header */}
-      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm shadow-slate-200/50 relative">
+      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm shadow-slate-200/50">
         <div className="container flex h-20 lg:h-24 items-center justify-between px-4 max-w-7xl mx-auto">
           <Link href="/" className="flex items-center space-x-2 md:space-x-3 group shrink-0">
             <div className="bg-secondary p-1.5 md:p-2 rounded flex items-center justify-center">

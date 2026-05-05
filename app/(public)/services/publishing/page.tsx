@@ -42,7 +42,7 @@ export default function PublishingSupport() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Kingster Hero */}
-      <section className="relative h-[35vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[35vh] flex items-end overflow-hidden">
         <Image 
           src="/images/hero.png" 
           alt="Publishing" 
