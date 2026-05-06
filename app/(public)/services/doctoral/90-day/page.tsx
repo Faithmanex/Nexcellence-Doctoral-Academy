@@ -78,7 +78,7 @@ export default function Dissertation90Day() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* ───── HERO ───── */}
-      <section className="relative pt-32 md:pt-40 pb-12 flex items-end overflow-hidden">
+      <section className="relative pt-12 md:pt-20 pb-12 flex items-end overflow-hidden">
         <Image
           src="/images/doctoral.png"
           alt="90-Day Dissertation Completion Program"

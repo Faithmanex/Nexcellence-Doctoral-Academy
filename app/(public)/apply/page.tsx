@@ -93,7 +93,7 @@ function ApplyForm() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Premium Hero */}
-      <section className="relative pt-32 md:pt-40 pb-16 flex items-end overflow-hidden">
+      <section className="relative pt-12 md:pt-20 pb-16 flex items-end overflow-hidden">
         <Image 
           src="/images/hero.png" 
           alt="Apply to Nexcellence Academy" 
